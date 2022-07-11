@@ -15,21 +15,30 @@ This is a small project to show implementation of Authentication and Authorizati
 ## API Endpoints
 
 /users
-`get` - /users/:uuid - retrieve a single user
-`post` - /users/:uuid - Delete a single user
-`put` - /users/:uuid - Update a single user
+
+- `get` - /users/:uuid - retrieve a single user
+
+- `post` - /users/:uuid - Delete a single user
+
+- `put` - /users/:uuid - Update a single user
 
 /ticket
-`get` - /ticket/:uuid - To retrieve a single ticket
-`put` - /ticket/:uuid - To update a single ticket
-`post` - /ticket/:uuid - To delete a single ticket
-`post` - /ticket - Create a new ticket
+
+- `get` - /ticket/:uuid - To retrieve a single ticket
+
+- `put` - /ticket/:uuid - To update a single ticket
+
+- `post` - /ticket/:uuid - To delete a single ticket
+
+- `post` - /ticket - Create a new ticket
 
 /login
-`post` - Login in a user using the provided username and password and generate JWT token
+
+- `post` - Login in a user using the provided username and password and generate JWT token
 
 /logout
-`post` - Logout an User and Invalidate JWT tokens
+
+- `post` - Logout an User and Invalidate JWT tokens
 
 ## Secret Key Generation
 
