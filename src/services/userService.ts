@@ -1,15 +1,15 @@
 import UserModel, { User } from "../models/user";
-import { DocumentDefinition, FilterQuery } from "mongoose";
+import { DocumentDefinition } from "mongoose";
 import bcrypt from "bcrypt";
 import "dotenv/config";
 
 export async function registerUser(input: DocumentDefinition<User>) {
-  //check if email already registered
+  //First check if the user is already registered
   return await UserModel.findOne({ email: input.email }).then(async (user) => {
     if (user) {
       return { message: "Email already registered" };
     } else {
-      const salt = await bcrypt.genSaltSync(10);
+      const salt = await bcrypt.genSaltSync(parseInt(process.env.SALT_ROUND as string));
       const hashPassword = bcrypt.hashSync(input.password, salt);
 
       const newUser = new UserModel({
@@ -51,10 +51,8 @@ export async function deleteUser(UserId: string) {
 export async function updateUser(UserId: string) {
   try {
     const user = await UserModel.findOneAndUpdate({ _id: UserId });
-
-    console.log(user);
     
   } catch (err) {
-    console.log(err);
+    return {message: `Unable to update user with ${UserId}`}
   }
 }

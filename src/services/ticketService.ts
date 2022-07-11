@@ -2,7 +2,6 @@ import TicketModel, { Ticket } from "../models/ticket";
 import { DocumentDefinition } from "mongoose";
 
 export async function ticketCreate(input: DocumentDefinition<Ticket>) {
-    console.log(input);
   try {
     const newTicket = new TicketModel({
       title: input.title,
@@ -30,11 +29,6 @@ export async function ticketDelete(ticketId: string) {
   }
 }
 
-//update a single ticket
-export async function ticketUpdate(ticketId: string) {}
-{
-}
-
 //gets a single ticket using id
 export async function ticketRetrieve(ticketId: string) {
   try {
@@ -45,3 +39,7 @@ export async function ticketRetrieve(ticketId: string) {
     return { message: `Unable to get ticket with id ${ticketId}` };
   }
 }
+
+//update a single ticket
+export async function ticketUpdate(ticketId: string) {}
+
